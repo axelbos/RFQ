@@ -1,0 +1,6 @@
+flask
+pandas
+python-docx
+openpyxl
+lxml
+docxcompose
