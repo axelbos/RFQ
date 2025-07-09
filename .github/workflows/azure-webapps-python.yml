@@ -1,7 +1,7 @@
-name: Build and deploy zipped Python app to Azure Web App
+name: Deploy lean Python app to Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: rfqpoc
+  AZURE_WEBAPP_NAME: rfqpoc  # Ändra till ditt app-namn
   PYTHON_VERSION: '3.13'
 
 on:
@@ -10,30 +10,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Create virtual environment and install dependencies
+      - name: Create minimal zip package (code only)
         run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          zip -r app.zip . -x ".git/*" ".github/*" "venv/*" "__pycache__/*" "*.pyc" "*.md" "*.zip"
 
-      - name: Create ZIP package (includes venv)
-        run: |
-          zip -r app.zip . -x ".git/*" ".github/*" "app.zip"
-
-      - name: Deploy ZIP to Azure Web App
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
