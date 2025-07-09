@@ -4,4 +4,3 @@ python-docx
 openpyxl
 lxml
 docxcompose
-docx
