@@ -310,7 +310,8 @@ def fill_dynamic_text_rows(doc: Document, elevators: list, key, placeholder: str
                 texts.append(passive_template.format(hiss_text))
             elif val is not None:
                 if isinstance(val, tuple):
-                    texts.append(grouped_template.format(hiss_text, *val))
+                    translated_parts = [translate_value_if_possible(v, key=k) for v, k in zip(val, key)]
+                    texts.append(grouped_template.format(hiss_text, *translated_parts))
                 else:
                     translated = translate_value_if_possible(val, key=key)
                     texts.append(grouped_template.format(hiss_text, translated))
