@@ -1,8 +1,8 @@
 name: Build and deploy zipped Python app to Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: rfqpoc  # Ditt appnamn i Azure
-  PYTHON_VERSION: '3.13'  # Använd en stabil version – 3.13 är inte alltid tillgänglig i Azure
+  AZURE_WEBAPP_NAME: rfqpoc
+  PYTHON_VERSION: '3.13'
 
 on:
   push:
@@ -22,18 +22,16 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install dependencies
+      - name: Create virtual environment and install dependencies
         run: |
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
-          # Kopiera alla venv-paket till app-root så de kommer med i zip
-          cp -r venv/lib/python*/site-packages/* ./ || true
 
-      - name: Create ZIP package
+      - name: Create ZIP package (includes venv)
         run: |
-          zip -r app.zip . -x "venv/*" ".git/*" ".github/*" "app.zip"
+          zip -r app.zip . -x ".git/*" ".github/*" "app.zip"
 
       - name: Deploy ZIP to Azure Web App
         uses: azure/webapps-deploy@v2
