@@ -811,8 +811,8 @@ def generate_final_doc(template_path, elevator_groups, all_elevators, hissida_pa
         all_elevators,
         key=("sill_type_a", "landing_door_sill_material"),
         placeholder="{{sill_type_a_group}}",  # Vi använder bara en placeholder för radmatchning
-        singular_template="Trösklar skall utföras som {} med tröskelprofil i {}.",
-        grouped_template="Hissar med beteckning {} skall ha trösklar utförda som {} med tröskelprofil i {}.",
+        singular_template="Trösklar skall utföras med placering {} med tröskelprofil i {}.",
+        grouped_template="Hissar med beteckning {} skall ha trösklar utförda med placering {} med tröskelprofil i {}.",
         passive_template="Hissar med beteckning {} saknar uppgift om tröskeltyp eller material."
     )
 
