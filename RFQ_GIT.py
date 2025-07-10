@@ -697,7 +697,8 @@ def generate_final_doc(template_path, elevator_groups, all_elevators, hissida_pa
         key=("car_mirror_size", "car_mirror_position"),
         placeholder="{{car_mirror_group}}",
         singular_template="Spegel skall vara {}. Spegel skall monteras på korgs {}.",
-        grouped_template="Hissar med beteckning {} skall ha {} spegel, monterad på korgs {}."
+        grouped_template="Hissar med beteckning {} skall ha {} spegel, monterad på korgs {}.",
+        passive_template="Hissar med beteckning {} saknar angiven typ för spegel."
     )
 
     fill_dynamic_text_rows(
