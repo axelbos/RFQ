@@ -781,7 +781,7 @@ def generate_final_doc(template_path, elevator_groups, all_elevators, hissida_pa
         all_elevators,
         key="landing_door_model",
         placeholder="{{landing_door_model_group}}",
-        singular_template="Schaktdörr skall vara utförda och konstruerade för minst {} cykler (öppning och stängning) per år.",
+        singular_template="Schaktdörrar skall vara utförda och konstruerade för minst {} cykler (öppning och stängning) per år.",
         grouped_template="Schaktdörrar i hissar med beteckning {} skall vara utförda och konstruerade för minst {} cykler (öppning och stängning) per år."
     )
 
