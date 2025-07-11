@@ -851,8 +851,8 @@ def generate_final_doc(template_path, elevator_groups, all_elevators, hissida_pa
         all_elevators,
         key="lcs_lci_placement",
         placeholder="{{lcs_lci_placement_group}}",
-        singular_template="Anropsknapp, var med hiss kan kallas till stannplanet, skall placeras vid sidan av schaktdörr. Anropsknappar skall placeras i {}.",
-        grouped_template="Hissar med beteckning {} skall ha anropsknapp, var med hiss kan kallas till stannplanet, placerad vid sidan av schaktdörr. Anropsknappar skall placeras i {}.",
+        singular_template="Anropsknapp, var med hiss kan kallas till stannplanet, skall placeras vid sidan av schaktdörr. Anropsknappar skall placeras {}.",
+        grouped_template="Hissar med beteckning {} skall ha anropsknapp, var med hiss kan kallas till stannplanet, placerad vid sidan av schaktdörr. Anropsknappar skall placeras {}.",
         passive_template="Hissar med beteckning {} saknar angiven placering för anropsknappar."
     )
 
